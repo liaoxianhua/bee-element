@@ -24,7 +24,7 @@
   & + & {
     margin-left: 10px;
   }
-
+  line-height:32px;
   @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
 
   &:hover,
@@ -115,14 +115,26 @@
   }
   @include when(round) {
     border-radius: 20px;
-    padding: 12px 23px;
+    padding: 0 20px;
   }
   @include when(circle) {
     border-radius: 50%;
-    padding: $--button-padding-vertical;
+    padding: 8px;
+    line-height:0;
   }
   @include m(primary) {
     @include button-variant($--button-primary-font-color, $--button-primary-background-color, $--button-primary-border-color);
+    &:hover,
+    &:focus {
+      color: #fff;
+      border-color: #3572C8;
+      background-color: #3572C8;
+    }
+    &:active {
+      color: #fff;
+      border-color: #3572C8;
+      background-color: #3572C8;
+    }
   }
   @include m(success) {
     @include button-variant($--button-success-font-color, $--button-success-background-color, $--button-success-border-color);
@@ -136,8 +148,26 @@
   @include m(info) {
     @include button-variant($--button-info-font-color, $--button-info-background-color, $--button-info-border-color);
   }
+  @include m(toggle) {
+    @include button-variant($--button-toggle-font-color, $--button-toggle-background-color, $--button-toggle-border-color);
+    &{
+      padding:0!important
+    }
+    .txt{
+      padding:0 16px;
+    }
+    .icon{
+      display:inline-block;
+      height:32px;
+      line-height:32px;
+      width:32px;
+      border-left: 1px solid #fff;
+      vertical-align:middle;
+    }
+  }
   @include m(medium) {
     @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, $--button-medium-border-radius);
+    line-height:1;
     @include when(circle) {
       padding: $--button-medium-padding-vertical;
     }
@@ -147,12 +177,14 @@
     @include when(circle) {
       padding: $--button-small-padding-vertical;
     }
+    line-height:1;
   }
   @include m(mini) {
     @include button-size($--button-mini-padding-vertical, $--button-mini-padding-horizontal, $--button-mini-font-size, $--button-mini-border-radius);
     @include when(circle) {
       padding: $--button-mini-padding-vertical;
     }
+    line-height:1;
   }
   @include m(text) {
     border-color: transparent;
@@ -234,7 +266,7 @@
       z-index: 1;
     }
   }
-  
+
   & > .el-dropdown {
     & > .el-button {
       border-top-left-radius: 0;
